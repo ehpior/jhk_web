@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from polls.models import Choice, Question
 
-# Create your views here..
+# Create your views here.
 
 def index(request):
     latest_question_list = Question.objects.all().order_by('-pub_date')[:5]
