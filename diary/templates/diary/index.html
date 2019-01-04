@@ -13,6 +13,7 @@
     {% endfor %}
     </ul>
 {% else %}
-    <p>No polls are available.</p>
+    <p>You didn't write yet.</p>
 {% endif %}
+    <a href="{% url 'diary:create' %}">Create?</a>
 </body>

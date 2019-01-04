@@ -2,8 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Ddate(models.Model):
-    
-    pub_date = models.DateField('published')
+    pub_date = models.DateTimeField('published')
     def __str__(self):
         return str(self.pub_date).split(' ')[0]
 
