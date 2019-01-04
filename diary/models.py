@@ -2,10 +2,10 @@ from django.db import models
 
 # Create your models here.
 class Ddate(models.Model):
-    pub_date = models.DateTimeField('published')
-
+    
+    pub_date = models.DateField('published')
     def __str__(self):
-        return self.pub_date
+        return str(self.pub_date).split(' ')[0]
 
 class Ddiary(models.Model):
     ddate = models.ForeignKey(Ddate, on_delete = models.CASCADE)
