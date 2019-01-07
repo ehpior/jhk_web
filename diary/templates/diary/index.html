@@ -6,6 +6,7 @@
     </title>
 </head>
 <body>
+{{ diary_list }}
 {% if diary_list %}
     <ul>
     {% for diary in diary_list %}
@@ -17,5 +18,5 @@
 {% endif %}
 <a href="{% url 'diary:create' %}">Create?</a>
 <br>
-{{ calendar|safe|escape }}
+{{ calendar }}
 </body>

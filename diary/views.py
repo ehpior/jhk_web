@@ -5,11 +5,17 @@ from diary.models import Ddate, Ddiary
 from django.db import models
 import datetime
 from calendar import HTMLCalendar
+from django.utils.html import conditional_escape
+from django.utils.safestring import mark_safe
 
 def index(request):
-    diary_list = Ddate.objects.all().order_by('-pub_date')[:5]
-    context = {'diary_list': diary_list, 'calendar': HTMLCalendar(6).formatmonth(2017,6)}
+    diary_list = Ddate.objects.all()
+#    diary_list = Ddate.objects.filter(id=11)
+    calendar_1 = HTMLCalendar(6).formatmonth(2017,6)
+    calendar = conditional_escape(calendar_1)
+    context = {'diary_list': diary_list, 'calendar': mark_safe(calendar_1)}
     return render(request, 'diary/index.html', context)
+
 
 def detail(request, diary_id):
     diary_content = get_object_or_404(Ddate, pk=diary_id)
