@@ -15,5 +15,7 @@
 {% else %}
     <p>You didn't write yet.</p>
 {% endif %}
-    <a href="{% url 'diary:create' %}">Create?</a>
+<a href="{% url 'diary:create' %}">Create?</a>
+<br>
+{{ calendar|safe|escape }}
 </body>

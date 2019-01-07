@@ -4,11 +4,11 @@ from django.urls import reverse
 from diary.models import Ddate, Ddiary
 from django.db import models
 import datetime
-
+from calendar import HTMLCalendar
 
 def index(request):
     diary_list = Ddate.objects.all().order_by('-pub_date')[:5]
-    context = {'diary_list': diary_list}
+    context = {'diary_list': diary_list, 'calendar': HTMLCalendar(6).formatmonth(2017,6)}
     return render(request, 'diary/index.html', context)
 
 def detail(request, diary_id):
