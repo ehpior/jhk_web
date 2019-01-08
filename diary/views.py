@@ -4,16 +4,42 @@ from django.urls import reverse
 from diary.models import Ddate, Ddiary
 from django.db import models
 import datetime
+from datetime import date
 from calendar import HTMLCalendar
 from django.utils.html import conditional_escape
 from django.utils.safestring import mark_safe
 
+class mycalendar(HTMLCalendar):
+    def formatday(self, day, weekday):
+        diary_list = Ddate.objects.all().order_by('-pub_date')
+        if day > 0:
+            cssclass = self.cssclasses[weekday]
+            body = ['<ul>']
+            body.append('<li><h6>')
+            body.append('testtest')
+            body.append('</li></h6>')
+            body.append('</ul>')
+            return self.day_cell(cssclass, '%d %s' % (day, ''.join(body)))
+        return self.day_cell('noday', day)
+
+    def day_cell(cls, cssclasses, body):
+        if body == 0:
+            body = ''
+        return '<td class="%s">%s</td>' % (cssclasses, body)
+    
+
 def index(request):
-    diary_list = Ddate.objects.all()
-#    diary_list = Ddate.objects.filter(id=11)
+    diary_list = Ddate.objects.all().order_by('-pub_date')
+    k1 = '2019'
+    k2 = '1'
+    k3 = '1'
+    k4 = '-'.join([k1.zfill(4),k2.zfill(2),k3.zfill(2)])
+    diary2 = Ddate.objects.filter(pub_date__icontains=k4)
+    #calendar_1 = mycalendar(6).formatmonth(2017,6)
     calendar_1 = HTMLCalendar(6).formatmonth(2017,6)
     calendar = conditional_escape(calendar_1)
-    context = {'diary_list': diary_list, 'calendar': mark_safe(calendar_1)}
+    context = {'diary_list': diary_list, 'diary2': diary2, 'calendar': mark_safe(calendar_1)}
+    #context = {'diary_list': diary_list, 'calendar': mark_safe(calendar_1)}
     return render(request, 'diary/index.html', context)
 
 
