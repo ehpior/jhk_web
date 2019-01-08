@@ -14,11 +14,17 @@ class mycalendar(HTMLCalendar):
         diary_list = Ddate.objects.all().order_by('-pub_date')
         if day > 0:
             cssclass = self.cssclasses[weekday]
-            body = ['<ul>']
+            kkk = '-'.join(['2019-01',str(day).zfill(2)])
+            kkk2 = Ddate.objects.filter(pub_date__icontains=kkk)
+            body = ['<ul style="border: 1px solid black; margin-top:0px; margin-bottom:10px; margin-right:10px; padding-right:20px;">']
             body.append('<li><h6>')
-            body.append('testtest')
-            body.append('</li></h6>')
-            body.append('</ul>')
+            if kkk2:
+                body.append(str(kkk2[0].ddiary_set.first().dtitle))
+            else:
+                body.append('testtest')
+            body.append('</h6></li><li><h6>')
+            body.append('<a href="/diary/create">Create</a>')
+            body.append('</h6></li></ul>')
             return self.day_cell(cssclass, '%d %s' % (day, ''.join(body)))
         return self.day_cell('noday', day)
 
@@ -35,8 +41,8 @@ def index(request):
     k3 = '1'
     k4 = '-'.join([k1.zfill(4),k2.zfill(2),k3.zfill(2)])
     diary2 = Ddate.objects.filter(pub_date__icontains=k4)
-    #calendar_1 = mycalendar(6).formatmonth(2017,6)
-    calendar_1 = HTMLCalendar(6).formatmonth(2017,6)
+    calendar_1 = mycalendar(6).formatmonth(2019,1)
+    #calendar_1 = HTMLCalendar(6).formatmonth(2017,6)
     calendar = conditional_escape(calendar_1)
     context = {'diary_list': diary_list, 'diary2': diary2, 'calendar': mark_safe(calendar_1)}
     #context = {'diary_list': diary_list, 'calendar': mark_safe(calendar_1)}
@@ -54,7 +60,7 @@ def create(request):
 
 def make(request):
     if request.method == 'POST':
-        new_Ddate = Ddate.objects.create(pub_date=request.POST['datetime'])
+        new_Ddate = Ddate.objects.create(pub_date=request.POST['date'])
         new_Ddiary = Ddiary.objects.create(ddate=new_Ddate, dtitle=request.POST['title'], dcontent=request.POST['content'])
     return HttpResponseRedirect(reverse('diary:index'))
 
