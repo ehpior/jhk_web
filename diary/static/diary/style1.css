@@ -8,3 +8,6 @@
 .a2:nth-child(2n+1) {
     background-color: #e3f2fd;
 }
+.month_1 {
+    padding-bottom: 20px;
+}

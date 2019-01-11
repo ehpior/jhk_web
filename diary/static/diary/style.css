@@ -1,0 +1,23 @@
+
+table tr:nth-child(2) th {
+    background-color: #0d47a1;
+    color: #FFFFFF;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.sun {
+    background-color: #bbdefb;
+}
+.a2 {
+    background-color: #e3f2fd;
+}
+.month_1 {
+    padding-bottom: 20px;
+}
+table {
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}

@@ -11,11 +11,11 @@ from django.utils.safestring import mark_safe
 
 class mycalendar(HTMLCalendar):
     #cssclasses = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
-    cssclasses = ["a2", "a2", "a2", "a2", "a2", "a2", "a2"]
+    cssclasses = ["a2", "a2", "a2", "a2", "a2", "a2", "sun"]
     cssclass_noday = "text-aasd"
-    cssclasses_weekday_head = ["a1", "a1", "a1", "a1", "a1", "a1", "a1"]
+    cssclasses_weekday_head = ["a1", "a1", "a1", "a1", "a1", "a1", "sun1"]
     #cssclass_month = "text-bold text-red"
-    #cssclass_month_head = "text-bold text-blue"
+    cssclass_month_head = "month_1"
     def formatday(self, day, weekday):
         diary_list = Ddate.objects.all().order_by('-pub_date')
         if day > 0:
