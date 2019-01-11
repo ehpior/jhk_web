@@ -12,6 +12,7 @@ table tr:nth-child(2) th {
     background-color: #e3f2fd;
 }
 .month_1 {
+    padding-top: 20px;
     padding-bottom: 20px;
 }
 table {
