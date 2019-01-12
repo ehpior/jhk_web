@@ -1,0 +1,10 @@
+.a1 {
+    background-color: #0d47a1;
+    color: #ffffff;
+}
+.a2:nth-child(2n) {
+    background-color: #bbdefb;
+}
+.a2:nth-child(2n+1) {
+    background-color: #e3f2fd;
+}
