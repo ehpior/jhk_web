@@ -1,3 +1,4 @@
+<center>
 <a href="{% url 'diary:index' %}">Home?</a>
 
 {% for choice in diary_content.ddiary_set.all %}
@@ -5,3 +6,4 @@
     <p>{{ diary_content }}</p>
     <p>{{ choice.dcontent }}</p>
 {% endfor %}
+</center>

@@ -23,7 +23,7 @@ class mycalendar(HTMLCalendar):
             kkk = '-'.join(['2019-01',str(day).zfill(2)])
             kkk2 = Ddate.objects.filter(pub_date__icontains=kkk)
             body = ['<ul style="margin:-15px 0px; padding:0px 30px;">']
-            body.append('<li style="margin-bottom:-25px"><h5>')
+            body.append('<li style="margin-bottom:-10px"><h5>')
             if kkk2:
                 body.append('<a href="/diary/')
                 body.append(str(kkk2[0].id))
@@ -31,9 +31,9 @@ class mycalendar(HTMLCalendar):
                 body.append(str(kkk2[0].ddiary_set.first()))
                 body.append('</a>')
             else:
-                body.append('음슴')
+                body.append('미작성')
             body.append('</h5></li><li><h5>')
-            body.append('<a href="/diary/create">Create</a>')
+            body.append('<a href="/diary/create">새로만들기</a>')
             body.append('</h5></li></ul>')
             return self.day_cell(cssclass, '%d %s' % (day, ''.join(body)))
         return self.day_cell('noday', day)

@@ -1,4 +1,18 @@
-
+body {
+    font-family: "Nanum Gothic", sans-serif;
+}
+a:link {
+    color: green;
+    text-decoration: none;
+}
+a:visited {
+    color: green;
+    text-decoration: none;
+}
+a:hover {
+    background-color: greenyellow;
+    text-decoration: underline;
+}
 table tr:nth-child(2) th {
     background-color: #0d47a1;
     color: #FFFFFF;
@@ -10,6 +24,12 @@ table tr:nth-child(2) th {
 }
 .a2 {
     background-color: #e3f2fd;
+    height: 100px;
+}
+.a2, .sun, .sun1{
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .month_1 {
     padding-top: 20px;
@@ -18,7 +38,7 @@ table tr:nth-child(2) th {
 table {
     border-collapse: collapse;
 }
-th, td {
+th, td{
     border: 1px solid black;
     border-collapse: collapse;
 }
