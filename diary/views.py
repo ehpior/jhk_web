@@ -31,7 +31,7 @@ class mycalendar(HTMLCalendar):
                 body.append(str(kkk2[0].ddiary_set.first()))
                 body.append('</a>')
             else:
-                body.append('미작성')
+                body.append('미작성상태')
             body.append('</h5></li><li><h5>')
             body.append('<a href="/diary/create">새로만들기</a>')
             body.append('</h5></li></ul>')
