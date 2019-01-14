@@ -25,7 +25,7 @@ SECRET_KEY = '58ihz7h)ikg&xqap(a6ulq8p=5j8(t6!i4)kfg1&8)-5#t(5ue'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'ehpior.pythonanywhere.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'ehpior.pythonanywhere.com', '*']
 
 
 # Application definition

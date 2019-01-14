@@ -9,6 +9,7 @@ from calendar import HTMLCalendar, month_name
 from django.utils.html import conditional_escape
 from django.utils.safestring import mark_safe
 
+#달력 정의
 class mycalendar(HTMLCalendar):
     #cssclasses = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
     cssclasses = ["a2", "a2", "a2", "a2", "a2", "a2", "sun"]
@@ -73,7 +74,7 @@ class mycalendar(HTMLCalendar):
             body = ''
         return '<td class="%s">%s</td>' % (cssclasses, body)
     
-
+#메인화면 /diary/
 def index(request, **kwargs):
     diary_list = Ddate.objects.all().order_by('-pub_date')
     k1 = '2019'
@@ -86,23 +87,21 @@ def index(request, **kwargs):
     if 'year' in kwargs and 'month' in kwargs:
         year = int(kwargs['year'])
         month = int(kwargs['month'])
-    #calendar_1 = mycalendar(6).formatmonth(2019,1)
     calendar_1 = mycalendar(6).formatmonth(year,month)
     calendar = conditional_escape(calendar_1)
     context = {'diary_list': diary_list, 'diary2': diary2, 'calendar': mark_safe(calendar_1)}
-    #context = {'diary_list': diary_list, 'calendar': mark_safe(calendar_1)}
     return render(request, 'diary/index.html', context)
 
-
+#내용 표시/detail/
 def detail(request, diary_id):
     diary_content = get_object_or_404(Ddate, pk=diary_id)
     return render(request, 'diary/detail.html', {'diary_content': diary_content})
 
-
+#작성/create/
 def create(request):
     return render(request, 'diary/create.html')
 
-
+#작성확정/create/make/
 def make(request):
     if request.method == 'POST':
         new_Ddate = Ddate.objects.create(pub_date=request.POST['date'])
