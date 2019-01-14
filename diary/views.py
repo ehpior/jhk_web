@@ -49,10 +49,10 @@ class mycalendar(HTMLCalendar):
         else:
             s = '%s' % month_name[month]
         return '<tr><th colspan="1" class="month_1">' \
-               '<a href="%s">이전 달</a></th>' \
+               '<a href="%s"><i class="left" aria-hidden="true"></i></a></th>' \
                '<th colspan="5" class="month_1">%s</th>' \
                '<th colspan="1" class="month_1">' \
-               '<a href="%s">다음 달</th></tr>' \
+               '<a href="%s"><i class="right" aria-hidden="true"></i></a></th></tr>' \
                % (reverse('diary:index', kwargs=self.get_previous_month(year, month)), s,
                   reverse('diary:index', kwargs=self.get_next_month(year, month)))
     @classmethod
